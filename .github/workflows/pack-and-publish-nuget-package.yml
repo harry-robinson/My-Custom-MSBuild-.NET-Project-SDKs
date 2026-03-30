@@ -137,5 +137,5 @@ jobs:
         run: |
           dotnet nuget push $env:PACKAGE_PATH --api-key $env:NUGET_API_KEY --source https://www.nuget.org/api/v2/package
         env:
-          PACKAGE_PATH: ${{ steps.pack-nuget-package.outputs.package-path }}
+          PACKAGE_PATH: ${{ steps.get-package-metadata.outputs.package-path }}
           NUGET_API_KEY : ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
