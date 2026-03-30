@@ -1,0 +1,168 @@
+<Project>
+
+  <PropertyGroup>
+
+    <!-- Sentinel value to indicate that this SDK is being used. Pattern adopted from Microsoft SDKs -->
+    <UsingMyCustomNETSdk>true</UsingMyCustomNETSdk>
+    
+    <!-- Determine if Microsoft.NET.Sdk props should be imported by checking Microsoft's own sentinel value. Pattern adopted from Microsoft SDKs -->
+    <_MyCustomNetSdkImportsMicrosoftNetSdk Condition="'$(UsingMicrosoftNETSdk)' != 'true'">true</_MyCustomNetSdkImportsMicrosoftNetSdk>
+  
+  </PropertyGroup>
+
+  <!-- Import Microsoft.NET.Sdk props first if not already imported -->
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" Condition="'$(_MyCustomNetSdkImportsMicrosoftNetSdk)' == 'true'" />
+  
+  <!-- This is not an exaustive list of MSBuild project properties -->
+  <PropertyGroup>
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#targetframeworks -->
+    <TargetFramework>net10.0</TargetFramework>
+
+    <!-- C# compiler options - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/ -->
+    
+    <!-- C# Compiler Options for language feature rules - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language -->
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language#allowunsafeblocks -->
+    <!-- <AllowUnsafeBlocks>true</AllowUnsafeBlocks> - Unsafe code is not allowed by default in .NET projects, so this option must be explicitly enabled to allow unsafe code blocks -->
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language#langversion - Read the LangVersion property documentation carefully before setting it -->
+    <!-- <LangVersion>preview</LangVersion> - The compiler accepts all valid language syntax from the latest preview version -->
+    <!-- <LangVersion>latest</LangVersion> - The compiler accepts syntax from the latest released version of the compiler (including minor version) -->
+    
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/language#nullable -->
+    <Nullable>enable</Nullable>
+
+    <!-- C# Compiler Options to report errors and warnings - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings -->
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings#analysis-level -->
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#analysislevel -->
+    <AnalysisLevel>latest-all</AnalysisLevel>
+    <!--<AnalysisLevel>preview-all</AnalysisLevel> Displays all informational warnings up to and including the latest preview release -->
+    
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings#treatwarningsaserrors -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings#reportanalyzer -->
+    <ReportAnalyzer>true</ReportAnalyzer>
+
+    <!-- C# Compiler Options that control code generation - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/code-generation -->
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/code-generation#debugtype -->
+    <DebugType>embedded</DebugType>
+    
+    <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/code-generation#deterministic - For modern .NET projects, deterministic compilation is enabled by default (the Deterministic property defaults to true) -->
+    <!-- <Deterministic>true</Deterministic> -->
+    
+    <!-- MSBuild reference for .NET SDK projects - https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props -->
+
+    <!-- Build-related properties - https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#build-related-properties -->
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#generatedocumentationfile -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    
+    <!-- Code analysis properties - https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#code-analysis-properties -->
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#codeanalysistreatwarningsaserrors -->
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#enablenetanalyzers - .NET code quality analysis is enabled, by default, for projects that target .NET 5 or a later version -->
+    <!-- <EnableNETAnalyzers>true</EnableNETAnalyzers> -->
+    
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#enforcecodestyleinbuild -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+    <!-- Generated file properties - https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#generated-file-properties -->
+    
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#implicitusings -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Common MSBuild project properties - https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties -->
+
+    <!-- See "Important" note: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/errors-warnings#treatwarningsaserrors -->
+    <!-- https://anthonysimmon.com/treatwarningsaserrors-and-warnaserror-are-not-the-same/ -->
+    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
+    
+    <!-- .NET environment variables - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-environment-variables -->
+    
+    <!-- .NET SDK and CLI environment variables - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-environment-variables#net-sdk-and-cli-environment-variables -->
+    
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-environment-variables#suppressnetcoresdkpreviewmessage -->
+    <!-- <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage> -->
+    
+    <!-- NuGet pack and restore as MSBuild targets - https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets -->
+    
+    <!-- https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets#pack-target-inputs -->
+    <IsPackable>false</IsPackable>
+    
+    <!-- Restore properties - https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets#restore-properties -->
+
+    <!-- https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets#restoring-with-msbuild-static-graph-evaluation -->
+    <RestoreUseStaticGraphEvaluation>true</RestoreUseStaticGraphEvaluation>
+
+    <!-- Package validation - https://learn.microsoft.com/en-us/dotnet/fundamentals/apicompat/package-validation/overview -->
+    <EnablePackageValidation>true</EnablePackageValidation>
+    
+    <!-- Auditing package dependencies for security vulnerabilities - https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages -->
+
+    <!-- https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages#configuring-nuget-audit -->
+    <!-- <NuGetAudit>true</NuGetAudit> - Default value is true for .NET 8 and later projects -->
+
+    <!-- https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages#configuring-nuget-audit -->
+    <!-- <NuGetAuditMode>all</NuGetAuditMode> - Default value is all for .NET 10 and later projects -->
+
+    <!-- https://learn.microsoft.com/en-us/nuget/concepts/auditing-packages#configuring-nuget-audit -->
+    <!--<NuGetAuditLevel>low</NuGetAuditLevel> - Default value is low -->
+
+    <!-- Enable debugging and diagnostics with Source Link - https://learn.microsoft.com/en-us/visualstudio/debugger/how-to-improve-diagnostics-debugging-with-sourcelink -->
+    <!-- https://devblogs.microsoft.com/dotnet/producing-packages-with-source-link/ -->
+    <!-- https://github.com/dotnet/sourcelink/blob/main/docs/README.md -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!--<EmbedUntrackedSources>true</EmbedUntrackedSources> - Enabled by default starting with the .NET 8 SDK  -->
+    
+    <!-- Miscellaneous -->
+
+    <!-- https://devblogs.microsoft.com/visualstudio/vs-toolbox-accelerate-your-builds-of-sdk-style-net-projects/ - Unknown if still relevant -->
+    <!-- https://github.com/dotnet/project-system/blob/main/docs/build-acceleration.md -->
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+
+    <!-- https://www.meziantou.net/csharp-compiler-strict-mode.htm -->
+    <Features>strict</Features>
+
+    <!-- https://github.com/nuget/home/issues/14731 -->
+    <RestoreSerializeGlobalProperties>true</RestoreSerializeGlobalProperties>
+    
+    <!-- https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets#sbom-generation-properties -->
+    <GenerateSBOM>true</GenerateSBOM>
+        
+    <!-- Add your custom properties here -->
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <!-- Code analyzers -->
+    
+    <!-- Meziantou.Analyzer - https://github.com/meziantou/Meziantou.Analyzer -->
+    <PackageReference Include="Meziantou.Analyzer" Version="3.0.24">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Microsoft.CodeAnalysis.BannedApiAnalyzers - https://github.com/dotnet/roslyn/tree/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.BannedApiAnalyzers -->
+    <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+    <!-- Miscellaneous -->
+    
+    <!-- SBOM Generation for .NET Projects - https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets -->
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  
+  </ItemGroup>
+  
+</Project>

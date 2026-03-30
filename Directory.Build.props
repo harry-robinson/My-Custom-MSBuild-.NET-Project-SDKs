@@ -1,0 +1,14 @@
+<!-- Shared properties across all SDK and test projects -->
+<Project>
+
+<PropertyGroup>
+
+  <!-- https://learn.microsoft.com/en-us/dotnet/core/sdk/artifacts-output -->
+  <UseArtifactsOutput>true</UseArtifactsOutput>
+
+  <!-- https://learn.microsoft.com/en-us/dotnet/core/sdk/artifacts-output#how-to-configure -->
+  <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+
+</PropertyGroup>
+
+</Project>

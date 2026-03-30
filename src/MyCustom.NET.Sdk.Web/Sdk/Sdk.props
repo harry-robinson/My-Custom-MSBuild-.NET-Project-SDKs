@@ -1,0 +1,31 @@
+<Project>
+
+  <PropertyGroup>
+
+    <!-- Sentinel value to indicate that this SDK is being used. Pattern adopted from Microsoft SDKs -->
+    <UsingMyCustomNETSdkWeb>true</UsingMyCustomNETSdkWeb>
+    
+    <!-- Determine if Microsoft.NET.Sdk.Web props should be imported by checking Microsoft's own sentinel values. Pattern adopted from Microsoft SDKs -->
+    <_MyCustomNETSdkWebImportsMicrosoftNETSdkWeb Condition="'$(UsingMicrosoftNETSdkWeb)' != 'true' And '$(UsingMicrosoftNETSdkBlazorWebAssembly)' != 'true'">true</_MyCustomNETSdkWebImportsMicrosoftNETSdkWeb>
+    
+    <!--
+      Determine if MyCustom.NET.Sdk props should be imported by checking it's own sentinel value. Pattern adopted from Microsoft SDKs.
+      MyCustom.NET SDKs are designed to be composable and a good deal of core functionality is implemented in the base MyCustom.NET.Sdk.
+    -->
+    <_MyCustomNETSdkWebImportsMyCustomNETSdk Condition="'$(UsingMyCustomNETSdk)' != 'true'">true</_MyCustomNETSdkWebImportsMyCustomNETSdk>
+    
+  </PropertyGroup>
+
+  <!-- Import Microsoft.NET.Sdk.Web props if not already imported. It will also import Microsoft.NET.Sdk props. among others -->
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(_MyCustomNETSdkWebImportsMicrosoftNETSdkWeb)' == 'true'" />
+  
+  <!-- Import MyCustom.NET.Sdk props if not already imported -->
+  <Import Project="Sdk.props" Sdk="MyCustom.NET.Sdk" Version="1.0.1" Condition="'$(_MyCustomNETSdkWebImportsMyCustomNETSdk)' == 'true'" />
+  
+  <PropertyGroup>
+    
+    <!-- Add your custom properties here -->
+    
+  </PropertyGroup>
+  
+</Project>

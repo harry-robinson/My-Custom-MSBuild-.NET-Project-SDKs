@@ -1,0 +1,40 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/.github/" />
+  <Folder Name="/.github/workflows/">
+    <File Path=".github/workflows/pack-and-publish-nuget-package.yml" />
+  </Folder>
+  <Folder Name="/assets/">
+    <File Path="assets/nuget-icon.jpg" />
+  </Folder>
+  <Folder Name="/docs/">
+    <File Path="docs/acknowledgments.md" />
+    <File Path="docs/authoring-and-extending.md" />
+    <File Path="docs/ci-cd-considerations.md" />
+    <File Path="docs/debugging.md" />
+    <File Path="docs/future-work.md" />
+    <File Path="docs/local-development.md" />
+    <File Path="docs/musings.md" />
+    <File Path="docs/the-case-for-custom-sdks.md" />
+    <File Path="docs/useful-resources.md" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="CODEOWNERS" />
+    <File Path="CODE_OF_CONDUCT.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="global.json" />
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <File Path="src/Directory.Build.props" />
+    <File Path="src/Directory.Build.targets" />
+    <Project Path="src/MyCustom.NET.Sdk.Web/MyCustom.NET.Sdk.Web.csproj" />
+    <Project Path="src/MyCustom.NET.Sdk/MyCustom.NET.Sdk.csproj" />
+  </Folder>
+</Solution>

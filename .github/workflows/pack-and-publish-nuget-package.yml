@@ -1,0 +1,141 @@
+name: Pack and Publish NuGet Package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  pack-and-publish-nuget-package:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Parse and validate release info
+        id: get-release-info
+        run: |
+          if ($env:GITHUB_EVENT_RELEASE_NAME -cne $env:GITHUB_EVENT_RELEASE_TAG) {
+            Write-Error "Release name `"$env:GITHUB_EVENT_RELEASE_NAME`" does not match release tag `"$env:GITHUB_EVENT_RELEASE_TAG`". Expected format for both release name and tag: ProjectName/RawVersion (e.g. MyProject/v1.0.1)"
+          }
+          $allowedProjectNames = $env:ALLOWED_PROJECT_NAMES.Split(",").Trim()
+          $projectName, $rawProjectVersion = $env:GITHUB_EVENT_RELEASE_TAG -split "/"
+          Write-Host "Parsed release tag `"$env:GITHUB_EVENT_RELEASE_TAG`": ProjectName=`"$projectName`" RawVersion=`"$rawProjectVersion`""
+          if ($projectName -cnotin $allowedProjectNames) {
+            Write-Error "Invalid project name: `"$projectName`". Expected one of: $($allowedProjectNames -join ", ")"
+          }
+          if ($rawProjectVersion[0] -ne 'v') {
+            Write-Error "Invalid raw version format: `"$rawProjectVersion`". Missing 'v' prefix. Expected format: vX.Y.Z (e.g. v1.0.1)"
+          }
+          $projectVersion = $rawProjectVersion.Substring(1)
+          if (-not [semver]::TryParse($projectVersion, [ref]$null)) {
+            Write-Error "Invalid version format: `"$projectVersion`". Expected semantic version format (https://semver.org): vX.Y.Z (e.g. v1.0.1)"
+          }
+          @"
+          project-name=$projectName
+          project-version=$projectVersion
+          "@ >> $env:GITHUB_OUTPUT
+        env:
+          GITHUB_EVENT_RELEASE_NAME: ${{ github.event.release.name }}
+          GITHUB_EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          ALLOWED_PROJECT_NAMES: "MyCustom.NET.Sdk,MyCustom.NET.Sdk.Web"
+
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout code
+        id: checkout-code
+        uses: actions/checkout@v6
+
+      # https://github.com/marketplace/actions/setup-net-core-sdk
+      - name: Setup .NET SDK
+        id: setup-dotnet
+        uses: actions/setup-dotnet@v5
+
+      # https://github.com/marketplace/actions/setup-net-core-sdk#dotnet-version
+      - name: Display .NET SDK info
+        id: get-dotnet-info
+        run: |
+          Write-Host "Installed .NET SDK `"$env:DOTNET_VERSION`""
+          dotnet --info
+        env:
+          DOTNET_VERSION: ${{ steps.setup-dotnet.outputs.dotnet-version }}
+
+      - name: Parse and validate NuGet package metadata
+        id: get-package-metadata
+        working-directory: src/${{ env.PROJECT_NAME }}
+        run: |
+          $packageId, $packageVersion, $packageOutputPath = dotnet pack -getProperty:PackageId,PackageVersion,PackageOutputPath | ConvertFrom-Json | % { $_.Properties.PackageId, $_.Properties.PackageVersion, $_.Properties.PackageOutputPath }
+          if ($packageId -cne $env:PROJECT_NAME) {
+            Write-Error "NuGet package id `"$packageId`" does not match expected project name `"$env:PROJECT_NAME`""
+          }
+          if ($packageVersion -cne $env:PROJECT_VERSION) {
+            Write-Error "NuGet package version `"$packageVersion`" does not match expected project version `"$env:PROJECT_VERSION`""
+          }
+          "package-path=$(Join-Path $packageOutputPath "$packageId.$packageVersion.nupkg")" >> $env:GITHUB_OUTPUT
+        env:
+          PROJECT_NAME: ${{ steps.get-release-info.outputs.project-name }}
+          PROJECT_VERSION: ${{ steps.get-release-info.outputs.project-version }}
+
+      # https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-pack
+      - name: Pack NuGet package
+        id: pack-nuget-package
+        working-directory: src/${{ env.PROJECT_NAME }}
+        run: |
+          dotnet pack
+        env:
+          PROJECT_NAME: ${{ steps.get-release-info.outputs.project-name }}
+
+      # https://cli.github.com/manual/gh_release_edit
+      - name: Update release notes
+        id: update-release-notes
+        working-directory: src/${{ env.PROJECT_NAME }}
+        run: |
+          $releaseNotes = ([regex]::Match((Get-Content CHANGELOG.md -Raw), "(?ms)^## 🎯 \[$([regex]::Escape($env:PROJECT_VERSION))\].*?(?=^## 🎯 \[|\z)")).Value.Trim()
+          if (-not $releaseNotes) {
+            Write-Error "Failed to extract release notes for version `"$env:PROJECT_VERSION`" from CHANGELOG.md"
+          }
+          gh release edit $env:GITHUB_EVENT_RELEASE_TAG --notes "$releaseNotes"
+        env:
+          PROJECT_NAME: ${{ steps.get-release-info.outputs.project-name }}
+          PROJECT_VERSION: ${{ steps.get-release-info.outputs.project-version }}
+          GITHUB_EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # https://cli.github.com/manual/gh_release_upload
+      - name: Upload NuGet package to release
+        id: upload-release-assets
+        run: |
+          gh release upload $env:GITHUB_EVENT_RELEASE_TAG $env:PACKAGE_PATH
+        env:
+          GITHUB_EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          PACKAGE_PATH: ${{ steps.get-package-metadata.outputs.package-path }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
+      - name: Publish NuGet package to GitHub Packages
+        id: publish-nuget-package-to-github
+        run: |
+          dotnet nuget push $env:PACKAGE_PATH --api-key $env:GH_TOKEN --source https://nuget.pkg.github.com/$env:GITHUB_REPOSITORY_OWNER/index.json
+        env:
+          PACKAGE_PATH: ${{ steps.get-package-metadata.outputs.package-path }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # https://github.com/marketplace/actions/nuget-login
+      - name: Authenticate to NuGet.org registry
+        id: nuget-login
+        uses: nuget/login@v1
+        with:
+          user: harry.robinson
+
+      # https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push
+      - name: Publish NuGet package to NuGet.org registry
+        id: publish-nuget-package-to-nuget-org
+        run: |
+          dotnet nuget push $env:PACKAGE_PATH --api-key $env:NUGET_API_KEY --source https://www.nuget.org/api/v2/package
+        env:
+          PACKAGE_PATH: ${{ steps.pack-nuget-package.outputs.package-path }}
+          NUGET_API_KEY : ${{ steps.nuget-login.outputs.NUGET_API_KEY }}

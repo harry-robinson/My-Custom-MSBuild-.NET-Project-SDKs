@@ -1,0 +1,25 @@
+﻿<!--
+  The Microsoft.Build.NoTargets MSBuild project SDK allows project tree owners the ability to define projects that do not compile an assembly.
+  This can be useful for utility projects that just copy files, build packages or any other function where an assembly is not compiled.
+  https://github.com/microsoft/MSBuildSdks/blob/main/src/NoTargets/README.md
+-->
+<Project Sdk="Microsoft.Build.NoTargets">
+  
+  <!--
+    MyCustom.NET.Sdk specific NuGet package metadata
+    
+    For documentation on MSBuild Project SDK and how MSBuild properties map to .nuspec properties, see:
+      * https://learn.microsoft.com/en-us/nuget/create-packages/creating-a-package-msbuild
+      * https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets
+      * https://learn.microsoft.com/en-us/nuget/create-packages/package-authoring-best-practices
+  -->
+  <PropertyGroup>
+    
+    <PackageVersion>1.0.1</PackageVersion>
+    <Title>My Custom NET SDK</Title>
+    <Description>A custom MSBuild project SDK for .NET 10 that layers opinionated defaults for build consistency across repositories.</Description>
+    <PackageTags>$(PackageTags)</PackageTags>
+    
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+<Project>
+
+  <!-- Import Microsoft.NET.Sdk props first if not already imported -->
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition="'$(_MyCustomNetSdkImportsMicrosoftNetSdk)' == 'true'" />
+  
+  <!-- Add your custom targets here -->
+  
+</Project>
