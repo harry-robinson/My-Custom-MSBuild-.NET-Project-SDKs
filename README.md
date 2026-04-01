@@ -65,8 +65,8 @@ Add the SDK to `global.json` at the root of your repository:
 ```json
 {
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk": "1.0.1",
-    "MyCustom.NET.Sdk.Web": "1.0.1"
+    "MyCustom.NET.Sdk": "1.0.2",
+    "MyCustom.NET.Sdk.Web": "1.0.2"
   }
 }
 ```
@@ -112,28 +112,28 @@ There are four main ways to reference an MSBuild project SDK in a project file.
 
 **1 - Inline in the project file:**
 ```xml
-<Project Sdk="MyCustom.NET.Sdk/1.0.1">
+<Project Sdk="MyCustom.NET.Sdk/1.0.2">
 ```
 
 **2 - As an explicit SDK element inside the project file:**
 ```xml
 <Project>
-  <Sdk Name="MyCustom.NET.Sdk" Version="1.0.1" />
-  <Sdk Name="MyOtherCustom.NET.Sdk" Version="1.0.1" />
+  <Sdk Name="MyCustom.NET.Sdk" Version="1.0.2" />
+  <Sdk Name="MyOtherCustom.NET.Sdk" Version="1.0.2" />
 </Project>
 ```
 
 **3 - As a combination of both:**
 ```xml
-<Project Sdk="MyCustom.NET.Sdk/1.0.1">
-  <Sdk Name="MyCustom.NET.Sdk.Web" Version="1.0.1" />
+<Project Sdk="MyCustom.NET.Sdk/1.0.2">
+  <Sdk Name="MyCustom.NET.Sdk.Web" Version="1.0.2" />
 </Project>
 ```
 
 **4 - As a directive in a file-based app:**
 .NET 10 introduces file-based apps, which run a single `.cs` file directly without a `.csproj`. The SDK is declared using a `#:sdk` directive at the top of the file:
 ```csharp
-#:sdk MyCustom.NET.Sdk/1.0.1
+#:sdk MyCustom.NET.Sdk/1.0.2
 ```
 
 As with project file references, if the version is pinned in `global.json`, it can be omitted:
@@ -142,7 +142,7 @@ As with project file references, if the version is pinned in `global.json`, it c
 ```
 
 > [!NOTE]
-> The `name/version` shorthand (e.g. `<Project Sdk="MyCustom.NET.Sdk/1.0.1">`) is only supported by the `Sdk` attribute on the `<Project>` element or file based app `#:sdk` directive. The explicit `<Sdk>` element requires the name and version as separate `Name` and `Version` attributes. The `<Import>` element accepts an `Sdk` attribute for the SDK name but does not support inline version specification, relying instead on the version resolved from `global.json`.
+> The `name/version` shorthand (e.g. `<Project Sdk="MyCustom.NET.Sdk/1.0.2">`) is only supported by the `Sdk` attribute on the `<Project>` element or file based app `#:sdk` directive. The explicit `<Sdk>` element requires the name and version as separate `Name` and `Version` attributes. The `<Import>` element accepts an `Sdk` attribute for the SDK name but does not support inline version specification, relying instead on the version resolved from `global.json`.
 
 Since the custom SDKs import `Microsoft.NET.Sdk` internally as part of their import chain, there is no need to declare it separately. In the case of `MyCustom.NET.Sdk.Web`, `Microsoft.NET.Sdk.Web` is also imported internally and similarly does not need to be declared separately. Declaring `Microsoft.NET.Sdk` or `Microsoft.NET.Sdk.Web` anywhere in your `.csproj`, whether via the `<Project Sdk="...">` attribute, the explicit `<Sdk>` element or a combination of both, would result in the respective SDK being loaded twice, causing MSBuild to emit a warning. The SDKs take precautions against this by checking, as best as possible, which SDKs have already been loaded before attempting to import them, guarding against accidental double-loading.
 
@@ -151,7 +151,7 @@ Since the custom SDKs import `Microsoft.NET.Sdk` internally as part of their imp
 ```json
 {
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk": "1.0.1"
+    "MyCustom.NET.Sdk": "1.0.2"
   }
 }
 ```

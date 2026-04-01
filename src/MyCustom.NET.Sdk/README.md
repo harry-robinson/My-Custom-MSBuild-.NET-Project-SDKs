@@ -12,7 +12,7 @@ The recommended way to reference the SDK is via `global.json` at the root of you
 ```json
 {
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk": "1.0.1"
+    "MyCustom.NET.Sdk": "1.0.2"
   }
 }
 ```
@@ -23,7 +23,7 @@ Then reference it in your `.csproj`:
 
 Alternatively, the version can be specified inline in the project file, though this is not recommended for repositories with multiple projects as it requires the version to be kept in sync across every project file:
 ```xml
-<Project Sdk="MyCustom.NET.Sdk/1.0.1">
+<Project Sdk="MyCustom.NET.Sdk/1.0.2">
 ```
 
 ## 📖 `Sdk.props` Reference

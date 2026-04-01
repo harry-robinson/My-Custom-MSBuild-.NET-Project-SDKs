@@ -3,6 +3,59 @@ All changes to `MyCustom.NET.Sdk.Web` are documented here. This project follows 
 
 See the [README](README.md) for full usage details.
 
+## 🎯 [1.0.2] - 2026-04-01
+Updates to NuGet package references. See below for details.
+
+### 🎉 What's New
+`MyCustom.NET.Sdk.Web` 1.0.2 incorporates `MyCustom.NET.Sdk` 1.0.2 as its base. All of the following are a direct result of that import.
+
+#### C# Compiler
+None.
+
+#### MSBuild & Code Analysis
+None.
+
+#### NuGet
+None.
+
+#### Source Link & Supply Chain Security
+None.
+
+#### Analyzers
+* `Meziantou.Analyzer` - Updated NuGet package from 3.0.24 to 3.0.41. See https://github.com/meziantou/Meziantou.Analyzer/releases for change details.
+
+### 💥 Breaking Changes
+None.
+
+### 🩹 Bug Fixes
+None.
+
+### ⚠️ Known Issues
+None.
+
+### ⬆️ Upgrading
+To consume the SDK, add it to `global.json` at the root of your repository:
+```json
+{
+  "msbuild-sdks": {
+    "MyCustom.NET.Sdk.Web": "1.0.2"
+  }
+}
+```
+
+Then reference it in your `.csproj`:
+```xml
+<Project Sdk="MyCustom.NET.Sdk.Web">
+
+  <PropertyGroup>
+
+    <!-- Usual properties and overrides go here -->
+
+  </PropertyGroup>
+
+</Project>
+```
+
 ## 🎯 [1.0.1] - 2026-03-30
 Initial release of `MyCustom.NET.Sdk.Web`.
 

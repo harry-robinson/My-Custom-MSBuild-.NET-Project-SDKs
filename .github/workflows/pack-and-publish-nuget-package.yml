@@ -20,7 +20,7 @@ jobs:
         id: get-release-info
         run: |
           if ($env:GITHUB_EVENT_RELEASE_NAME -cne $env:GITHUB_EVENT_RELEASE_TAG) {
-            Write-Error "Release name `"$env:GITHUB_EVENT_RELEASE_NAME`" does not match release tag `"$env:GITHUB_EVENT_RELEASE_TAG`". Expected format for both release name and tag: ProjectName/RawVersion (e.g. MyProject/v1.0.1)"
+            Write-Error "Release name `"$env:GITHUB_EVENT_RELEASE_NAME`" does not match release tag `"$env:GITHUB_EVENT_RELEASE_TAG`". Expected format for both release name and tag: ProjectName/RawVersion (e.g. MyProject/v1.0.2)"
           }
           $allowedProjectNames = $env:ALLOWED_PROJECT_NAMES.Split(",").Trim()
           $projectName, $rawProjectVersion = $env:GITHUB_EVENT_RELEASE_TAG -split "/"
@@ -29,11 +29,11 @@ jobs:
             Write-Error "Invalid project name: `"$projectName`". Expected one of: $($allowedProjectNames -join ", ")"
           }
           if ($rawProjectVersion[0] -ne 'v') {
-            Write-Error "Invalid raw version format: `"$rawProjectVersion`". Missing 'v' prefix. Expected format: vX.Y.Z (e.g. v1.0.1)"
+            Write-Error "Invalid raw version format: `"$rawProjectVersion`". Missing 'v' prefix. Expected format: vX.Y.Z (e.g. v1.0.2)"
           }
           $projectVersion = $rawProjectVersion.Substring(1)
           if (-not [semver]::TryParse($projectVersion, [ref]$null)) {
-            Write-Error "Invalid version format: `"$projectVersion`". Expected semantic version format (https://semver.org): vX.Y.Z (e.g. v1.0.1)"
+            Write-Error "Invalid version format: `"$projectVersion`". Expected semantic version format (https://semver.org): vX.Y.Z (e.g. v1.0.2)"
           }
           @"
           project-name=$projectName

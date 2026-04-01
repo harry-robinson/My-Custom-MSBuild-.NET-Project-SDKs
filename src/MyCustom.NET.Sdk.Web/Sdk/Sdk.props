@@ -20,7 +20,7 @@
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.Web" Condition="'$(_MyCustomNETSdkWebImportsMicrosoftNETSdkWeb)' == 'true'" />
   
   <!-- Import MyCustom.NET.Sdk props if not already imported -->
-  <Import Project="Sdk.props" Sdk="MyCustom.NET.Sdk" Version="1.0.1" Condition="'$(_MyCustomNETSdkWebImportsMyCustomNETSdk)' == 'true'" />
+  <Import Project="Sdk.props" Sdk="MyCustom.NET.Sdk" Version="1.0.2" Condition="'$(_MyCustomNETSdkWebImportsMyCustomNETSdk)' == 'true'" />
   
   <PropertyGroup>
     
