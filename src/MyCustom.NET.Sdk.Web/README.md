@@ -74,7 +74,7 @@ The following table documents every property and package reference set in `Sdk.p
 ### Analyzers
 | Package | Version | Source | Description |
 |---|---|---|---|
-| `Meziantou.Analyzer` | `3.0.24` | `MyCustom.NET.Sdk` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
+| `Meziantou.Analyzer` | `3.0.41` | `MyCustom.NET.Sdk` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
 | `Microsoft.CodeAnalysis.BannedApiAnalyzers` | `3.3.4` | `MyCustom.NET.Sdk` | A set of Roslyn analyzers that allow you to ban specific APIs from being used in your codebase, either by specifying them directly or by referencing an external configuration file. Useful for enforcing architectural boundaries, preventing usage of dangerous or deprecated APIs and maintaining a clean and consistent codebase. |
 
 ### Package References
