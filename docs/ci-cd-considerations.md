@@ -9,7 +9,7 @@ There is nothing CI/CD-specific about consuming these SDKs, but there are a few 
     "version": "x.x.xxx"
   },
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk": "1.0.2"
+    "MyCustom.NET.Sdk": "x.x.x"
   }
 }
 ```

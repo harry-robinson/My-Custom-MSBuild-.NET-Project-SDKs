@@ -12,7 +12,7 @@ The recommended way to reference the SDK is via `global.json` at the root of you
 ```json
 {
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk.Web": "1.0.2"
+    "MyCustom.NET.Sdk.Web": "1.0.3"
   }
 }
 ```
@@ -23,7 +23,7 @@ Then reference it in your `.csproj`:
 
 Alternatively, the version can be specified inline in the project file, though this is not recommended for repositories with multiple projects as it requires the version to be kept in sync across every project file:
 ```xml
-<Project Sdk="MyCustom.NET.Sdk.Web/1.0.2">
+<Project Sdk="MyCustom.NET.Sdk.Web/1.0.3">
 ```
 
 ## 📖 `Sdk.props` Reference
@@ -74,7 +74,7 @@ The following table documents every property and package reference set in `Sdk.p
 ### Analyzers
 | Package | Version | Source | Description |
 |---|---|---|---|
-| `Meziantou.Analyzer` | `3.0.41` | `MyCustom.NET.Sdk` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
+| `Meziantou.Analyzer` | `3.0.44` | `MyCustom.NET.Sdk` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
 | `Microsoft.CodeAnalysis.BannedApiAnalyzers` | `3.3.4` | `MyCustom.NET.Sdk` | A set of Roslyn analyzers that allow you to ban specific APIs from being used in your codebase, either by specifying them directly or by referencing an external configuration file. Useful for enforcing architectural boundaries, preventing usage of dangerous or deprecated APIs and maintaining a clean and consistent codebase. |
 
 ### Package References

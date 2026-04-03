@@ -3,6 +3,60 @@ All changes to `MyCustom.NET.Sdk` are documented here. This project follows [Sem
 
 See the [README](README.md) for full usage details.
 
+## 🎯 [1.0.3] - 2026-04-03
+Updates to NuGet package references. See below for details.
+
+### 🎉 What's New
+
+#### C# Compiler
+None.
+
+#### MSBuild & Code Analysis
+None.
+
+#### NuGet
+None.
+
+#### Source Link & Supply Chain Security
+None.
+
+#### Analyzers
+* `Meziantou.Analyzer` - Updated NuGet package from 3.0.41 to 3.0.44. See https://github.com/meziantou/Meziantou.Analyzer/releases for change details.
+
+### 💥 Breaking Changes
+None.
+
+### 🩹 Bug Fixes
+None.
+
+### ⚠️ Known Issues
+None.
+
+### ⬆️ Upgrading
+To consume the SDK, add it to `global.json` at the root of your repository:
+```json
+{
+  "msbuild-sdks": {
+    "MyCustom.NET.Sdk": "1.0.3"
+  }
+}
+```
+
+Then reference it in your `.csproj`:
+```xml
+<Project Sdk="MyCustom.NET.Sdk">
+
+  <PropertyGroup>
+
+    <!-- Usual properties and overrides go here -->
+
+  </PropertyGroup>
+
+</Project>
+```
+
+See the [README](README.md) for full SDK details.
+
 ## 🎯 [1.0.2] - 2026-04-01
 Updates to NuGet package references. See below for details.
 
