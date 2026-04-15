@@ -205,8 +205,8 @@ When the SDK version is pinned in `global.json` (recommended), upgrading simply 
 ```json
 {
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk": "1.1.0",
-    "MyCustom.NET.Sdk.Web": "1.1.0"
+    "MyCustom.NET.Sdk": "x.x.x",
+    "MyCustom.NET.Sdk.Web": "x.x.x"
   }
 }
 ```
