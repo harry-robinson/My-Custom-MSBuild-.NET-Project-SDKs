@@ -61,7 +61,7 @@ The goal is to make the correct configuration the default configuration, while s
 > If you are only consuming the SDKs in an existing project, any IDE with .NET 10 support is sufficient. The MSBuild version requirement is satisfied automatically by installing the .NET 10 SDK and does not need to be managed separately.
 
 ## ⚡ Quick Start
-Add the SDK to `global.json` at the root of your repository where x.x.x is the latest or desired version of the SDK (e.g., `1.0.0`):
+Add the SDK to `global.json` at the root of your repository where x.x.x is the latest or desired version of the SDK (e.g., `1.0.4`):
 ```json
 {
   "msbuild-sdks": {

@@ -15,7 +15,7 @@
   -->
   <PropertyGroup>
     
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.4</PackageVersion>
     <Title>My Custom NET SDK Web</Title>
     <Description>A custom MSBuild project SDK for .NET 10 web applications, extending MyCustom.NET.Sdk with additional defaults for ASP.NET Core projects.</Description>
     <PackageTags>$(PackageTags);aspnetcore;web</PackageTags>
