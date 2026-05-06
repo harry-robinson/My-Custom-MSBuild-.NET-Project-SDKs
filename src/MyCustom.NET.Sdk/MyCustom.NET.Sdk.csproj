@@ -15,7 +15,7 @@
   -->
   <PropertyGroup>
     
-    <PackageVersion>1.0.4</PackageVersion>
+    <PackageVersion>1.0.5</PackageVersion>
     <Title>My Custom NET SDK</Title>
     <Description>A custom MSBuild project SDK for .NET 10 that layers opinionated defaults for build consistency across repositories.</Description>
     <PackageTags>$(PackageTags)</PackageTags>

@@ -1,7 +1,59 @@
 ﻿# 📋 Changelog
 All changes to `MyCustom.NET.Sdk` are documented here. This project follows [Semantic Versioning 2.0.0](https://semver.org).
 
-See the [README](README.md) for full usage details.
+See the [README](README.md) for full usage and SDK details.
+
+## 🎯 [1.0.5] - 2026-05-06
+Updates to NuGet package references. See below for details.
+
+### 🎉 What's New
+
+#### C# Compiler
+None.
+
+#### MSBuild & Code Analysis
+None.
+
+#### NuGet
+None.
+
+#### Source Link & Supply Chain Security
+None.
+
+#### Analyzers
+* `Meziantou.Analyzer` - Updated NuGet package from 3.0.49 to 3.0.71. See https://github.com/meziantou/Meziantou.Analyzer/releases/tag/3.0.71 for change details.
+
+### 💥 Breaking Changes
+None.
+
+### 🩹 Bug Fixes
+None.
+
+### ⚠️ Known Issues
+None.
+
+### ⬆️ Upgrading
+To consume the SDK, add it to `global.json` at the root of your repository:
+```json
+{
+  "msbuild-sdks": {
+    "MyCustom.NET.Sdk": "1.0.5"
+  }
+}
+```
+
+Then reference it in your `.csproj`:
+```xml
+<Project Sdk="MyCustom.NET.Sdk">
+
+  <PropertyGroup>
+
+    <!-- Usual properties and overrides go here -->
+
+  </PropertyGroup>
+
+</Project>
+```
 
 ## 🎯 [1.0.4] - 2026-04-17
 Updates to NuGet package references. See below for details.
@@ -55,8 +107,6 @@ Then reference it in your `.csproj`:
 </Project>
 ```
 
-See the [README](README.md) for full SDK details.
-
 ## 🎯 [1.0.3] - 2026-04-03
 Updates to NuGet package references. See below for details.
 
@@ -109,8 +159,6 @@ Then reference it in your `.csproj`:
 </Project>
 ```
 
-See the [README](README.md) for full SDK details.
-
 ## 🎯 [1.0.2] - 2026-04-01
 Updates to NuGet package references. See below for details.
 
@@ -162,8 +210,6 @@ Then reference it in your `.csproj`:
 
 </Project>
 ```
-
-See the [README](README.md) for full SDK details.
 
 ## 🎯 [1.0.1] - 2026-03-30
 Initial release of `MyCustom.NET.Sdk`.
@@ -231,5 +277,3 @@ Then reference it in your `.csproj`:
 
 </Project>
 ```
-
-See the [README](README.md) for full SDK details.

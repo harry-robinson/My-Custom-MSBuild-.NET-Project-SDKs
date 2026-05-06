@@ -144,7 +144,7 @@
     <!-- Code analyzers -->
     
     <!-- Meziantou.Analyzer - https://github.com/meziantou/Meziantou.Analyzer -->
-    <PackageReference Include="Meziantou.Analyzer" Version="3.0.49">
+    <PackageReference Include="Meziantou.Analyzer" Version="3.0.71">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
