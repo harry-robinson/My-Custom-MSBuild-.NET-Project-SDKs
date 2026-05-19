@@ -33,7 +33,6 @@
   </Folder>
   <Folder Name="/src/">
     <File Path="src/Directory.Build.props" />
-    <File Path="src/Directory.Build.targets" />
     <Project Path="src/MyCustom.NET.Sdk.Web/MyCustom.NET.Sdk.Web.csproj" />
     <Project Path="src/MyCustom.NET.Sdk/MyCustom.NET.Sdk.csproj" />
   </Folder>

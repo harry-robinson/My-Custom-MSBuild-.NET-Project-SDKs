@@ -18,12 +18,11 @@ My Custom MSBuild .NET Project SDKs/
    │  └─ Sdk/                             # Required SDK folder, resolved by MSBuild
    │     ├─ Sdk.props                     # Imported at the top of the project file
    │     └─ Sdk.targets                   # Imported at the bottom of the project file
-   ├─ Directory.Build.props               # Shared NuGet package metadata across all SDKs
-   └─ Directory.Build.targets             # Shared NuGet pack validation logic across all SDKs
+   └─ Directory.Build.props               # Shared NuGet package metadata across all SDKs
 ```
 
 > [!NOTE]
-> `Directory.Build.props` and `Directory.Build.targets` at the `src` level are not part of any SDK. They define common NuGet package metadata (e.g. authors, license, repository URL, etc.) and shared build logic across all SDK projects, ensuring consistency without duplicating it in every `.csproj` file.
+> `Directory.Build.props` at the `src` level are not part of any SDK. They define common NuGet package metadata (e.g. authors, license, repository URL, etc.) and shared build logic across all SDK projects, ensuring consistency without duplicating it in every `.csproj` file.
 
 ## SDK Structure
 An MSBuild project SDK is a NuGet package with a specific folder structure. At its core, an SDK must contain a folder exactly named `Sdk` at the root of the package, containing two files: `Sdk.props` and `Sdk.targets`. This folder and file naming is a hard requirement enforced by MSBuild. It is not configurable.
