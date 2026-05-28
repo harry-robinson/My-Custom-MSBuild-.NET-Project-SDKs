@@ -1,0 +1,29 @@
+<!--
+  Central Package Management (CPM)
+  https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management
+  https://devblogs.microsoft.com/dotnet/introducing-central-package-management/
+-->
+<Project>
+  
+  <PropertyGroup>
+    
+    <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management#enabling-central-package-management -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+    <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management#overriding-package-versions -->
+    <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
+    
+  </PropertyGroup>
+  
+  <ItemGroup>
+    
+    <!-- SBOM Generation for .NET Projects - https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets -->
+    <!-- Global Package References - https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management#global-package-references -->
+    <GlobalPackageReference  Include="Microsoft.Sbom.Targets" Version="4.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </GlobalPackageReference>
+    
+  </ItemGroup>
+
+</Project>

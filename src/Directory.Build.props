@@ -62,6 +62,9 @@
     <!-- https://www.kenmuse.com/blog/distributing-dotnet-dependencies-and-settings-with-packages/ -->
     <NoWarn>$(NoWarn);NU5128</NoWarn>
 
+    <!-- https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets#sbom-generation-properties -->
+    <GenerateSBOM>true</GenerateSBOM>
+    
   </PropertyGroup>
-  
+
 </Project>
