@@ -142,6 +142,12 @@
   <ItemGroup>
 
     <!-- Code analyzers -->
+
+    <!-- AsyncFixer - https://github.com/semihokur/AsyncFixer -->
+    <PackageReference Include="AsyncFixer" Version="2.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     
     <!-- Meziantou.Analyzer - https://github.com/meziantou/Meziantou.Analyzer -->
     <PackageReference Include="Meziantou.Analyzer" Version="3.0.98">
