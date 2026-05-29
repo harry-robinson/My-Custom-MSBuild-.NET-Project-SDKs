@@ -161,6 +161,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
 
+    <!-- Microsoft.VisualStudio.Threading.Analyzers - https://microsoft.github.io/vs-threading/analyzers/index.html -->
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
     <!-- Miscellaneous -->
     
     <!-- SBOM Generation for .NET Projects - https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets -->

@@ -77,6 +77,7 @@ The following table documents every property and package reference set in `Sdk.p
 | `AsyncFixer` | `2.1.0` | Helps developers find and correct common `async/await` misuses (anti-patterns) and, when possible, offers automatic fixes |
 | `Meziantou.Analyzer` | `3.0.98` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
 | `Microsoft.CodeAnalysis.BannedApiAnalyzers` | `3.3.4` | A set of Roslyn analyzers that allow you to ban specific APIs from being used in your codebase, either by specifying them directly or by referencing an external configuration file. Useful for enforcing architectural boundaries, preventing usage of dangerous or deprecated APIs and maintaining a clean and consistent codebase. |
+| `Microsoft.VisualStudio.Threading.Analyzers` | `17.14.15` | Static code analyzers to detect common mistakes or potential issues regarding threading and async coding. |
 
 ### Package References
 | Package | Version | Description |
