@@ -167,6 +167,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
 
+    <!-- Roslynator - https://github.com/dotnet/roslynator -->
+    <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
     <!-- Miscellaneous -->
     
     <!-- SBOM Generation for .NET Projects - https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets -->
