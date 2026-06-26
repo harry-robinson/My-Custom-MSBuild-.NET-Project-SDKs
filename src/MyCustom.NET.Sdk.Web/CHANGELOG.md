@@ -6,6 +6,7 @@ See the [README](README.md) for full usage and SDK details.
 ## 🎯 [1.0.6] - 2026-06-25
 `MyCustom.NET.Sdk.Web` 1.0.6 incorporates `MyCustom.NET.Sdk` 1.0.6 as its base. All of the following are a direct result of that import.
 
+ * Fixed a bug in pack-and-publish-nuget-package.yml that prevented the workflow from getting the PackageId, PackageVersion and PackageOutputPath from the project file.
  * Updated .NET SDK version from 10.0.201 to 10.0.300 in global.json.
  * Removed unused Directory.Build.targets.
  * Enabled [CPM](https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management) and [SBOM](https://devblogs.microsoft.com/engineering-at-microsoft/microsoft-open-sources-software-bill-of-materials-sbom-generation-tool/) generation in project.
