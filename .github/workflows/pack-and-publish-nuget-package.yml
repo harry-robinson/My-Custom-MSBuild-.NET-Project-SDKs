@@ -47,7 +47,7 @@ jobs:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout code
         id: checkout-code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # https://github.com/marketplace/actions/setup-net-core-sdk
       - name: Setup .NET SDK
