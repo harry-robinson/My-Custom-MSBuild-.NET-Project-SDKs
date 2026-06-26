@@ -67,7 +67,7 @@ jobs:
         id: get-package-metadata
         working-directory: src/${{ env.PROJECT_NAME }}
         run: |
-          $packageId, $packageVersion, $packageOutputPath = dotnet msbuild -getProperty:PackageId,PackageVersion,PackageOutputPath | ConvertFrom-Json | % { $_.Properties.PackageId, $_.Properties.PackageVersion, $_.Properties.PackageOutputPath }
+          $packageId, $packageVersion, $packageOutputPath = dotnet msbuild -property:Configuration=Release -getProperty:PackageId,PackageVersion,PackageOutputPath | ConvertFrom-Json | % { $_.Properties.PackageId, $_.Properties.PackageVersion, $_.Properties.PackageOutputPath }
           if ($packageId -cne $env:PROJECT_NAME) {
             Write-Error "NuGet package id `"$packageId`" does not match expected project name `"$env:PROJECT_NAME`""
           }
