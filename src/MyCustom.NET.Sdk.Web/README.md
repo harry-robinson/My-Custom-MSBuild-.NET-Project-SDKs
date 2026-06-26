@@ -12,7 +12,7 @@ The recommended way to reference the SDK is via `global.json` at the root of you
 ```json
 {
   "msbuild-sdks": {
-    "MyCustom.NET.Sdk.Web": "1.0.5"
+    "MyCustom.NET.Sdk.Web": "1.0.6"
   }
 }
 ```
@@ -23,7 +23,7 @@ Then reference it in your `.csproj`:
 
 Alternatively, the version can be specified inline in the project file, though this is not recommended for repositories with multiple projects as it requires the version to be kept in sync across every project file:
 ```xml
-<Project Sdk="MyCustom.NET.Sdk.Web/1.0.5">
+<Project Sdk="MyCustom.NET.Sdk.Web/1.0.6">
 ```
 
 ## 📖 `Sdk.props` Reference
@@ -75,9 +75,9 @@ The following table documents every property and package reference set in `Sdk.p
 | Package | Version | Source | Description |
 |---|---|---|---|
 | `AsyncFixer` | `2.1.0` | `MyCustom.NET.Sdk` | Helps developers find and correct common `async/await` misuses (anti-patterns) and, when possible, offers automatic fixes |
-| `Meziantou.Analyzer` | `3.0.98` | `MyCustom.NET.Sdk` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
+| `Meziantou.Analyzer` | `3.0.114` | `MyCustom.NET.Sdk` | A Roslyn analyzer to enforce some good practices in C# in terms of design, usage, security, performance and style. |
 | `Microsoft.CodeAnalysis.BannedApiAnalyzers` | `3.3.4` | `MyCustom.NET.Sdk` | A set of Roslyn analyzers that allow you to ban specific APIs from being used in your codebase, either by specifying them directly or by referencing an external configuration file. Useful for enforcing architectural boundaries, preventing usage of dangerous or deprecated APIs and maintaining a clean and consistent codebase. |
-| `Microsoft.VisualStudio.Threading.Analyzers` | `17.14.15` | `MyCustom.NET.Sdk` | Static code analyzers to detect common mistakes or potential issues regarding threading and async coding. |
+| `Microsoft.VisualStudio.Threading.Analyzers` | `18.7.23` | `MyCustom.NET.Sdk` | Static code analyzers to detect common mistakes or potential issues regarding threading and async coding. |
 | `Roslynator.Analyzers` | `4.15.0` | `MyCustom.NET.Sdk` | A collection of 200+ analyzers for C#, powered by Roslyn. |
 
 ### Package References

@@ -3,6 +3,65 @@ All changes to `MyCustom.NET.Sdk` are documented here. This project follows [Sem
 
 See the [README](README.md) for full usage and SDK details.
 
+## 🎯 [1.0.6] - 2026-06-25
+ * Updated .NET SDK version from 10.0.201 to 10.0.300 in global.json.
+ * Removed unused Directory.Build.targets.
+ * Enabled [CPM](https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management) and [SBOM](https://devblogs.microsoft.com/engineering-at-microsoft/microsoft-open-sources-software-bill-of-materials-sbom-generation-tool/) generation in project.
+ * Additions and updates to Analyzers. See below for details.
+
+### 🎉 What's New
+
+#### C# Compiler
+None.
+
+#### MSBuild & Code Analysis
+None.
+
+#### NuGet
+None.
+
+#### Source Link & Supply Chain Security
+None.
+
+#### Analyzers
+* `Meziantou.Analyzer` - Updated NuGet package from 3.0.71 to 3.0.114. See https://github.com/meziantou/Meziantou.Analyzer/releases/tag/3.0.114 for change details.
+* `AsyncFixer` - Added [`AsyncFixer`](https://github.com/semihokur/AsyncFixer) NuGet package version 2.1.0 to help developers find and correct common `async/await` misuses (anti-patterns) and, when possible, offer automatic fixes.
+* `Microsoft.CodeAnalysis.BannedApiAnalyzers` - Added [`Microsoft.CodeAnalysis.BannedApiAnalyzers`](https://github.com/dotnet/roslyn/tree/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.BannedApiAnalyzers) NuGet package version 3.3.4 to allow banning specific APIs from being used in your codebase, either by specifying them directly or by referencing an external configuration file. Useful for enforcing architectural boundaries, preventing usage of dangerous or deprecated APIs and maintaining a clean and consistent codebase.
+* `Microsoft.VisualStudio.Threading.Analyzers` - Added [`Microsoft.VisualStudio.Threading.Analyzers`](https://microsoft.github.io/vs-threading/analyzers/index.html) NuGet package version 18.7.23 to provide static code analyzers to detect common mistakes or potential issues regarding threading and async coding.
+* `Roslynator.Analyzers` - Added [`Roslynator.Analyzers`](https://github.com/dotnet/roslynator) NuGet package version 4.15.0 to provide a collection of 200+ analyzers for C#, powered by Roslyn.
+
+### 💥 Breaking Changes
+None.
+
+### 🩹 Bug Fixes
+None.
+
+### ⚠️ Known Issues
+None.
+
+### ⬆️ Upgrading
+To consume the SDK, add it to `global.json` at the root of your repository:
+```json
+{
+  "msbuild-sdks": {
+    "MyCustom.NET.Sdk": "1.0.6"
+  }
+}
+```
+
+Then reference it in your `.csproj`:
+```xml
+<Project Sdk="MyCustom.NET.Sdk">
+
+  <PropertyGroup>
+
+    <!-- Usual properties and overrides go here -->
+
+  </PropertyGroup>
+
+</Project>
+```
+
 ## 🎯 [1.0.5] - 2026-05-06
 Updates to NuGet package references. See below for details.
 
