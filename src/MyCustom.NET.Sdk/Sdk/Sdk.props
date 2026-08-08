@@ -144,31 +144,31 @@
     <!-- Code analyzers -->
 
     <!-- AsyncFixer - https://github.com/semihokur/AsyncFixer -->
-    <PackageReference Include="AsyncFixer" Version="2.1.0">
+    <PackageReference Include="AsyncFixer" Version="2.1.0" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     
     <!-- Meziantou.Analyzer - https://github.com/meziantou/Meziantou.Analyzer -->
-    <PackageReference Include="Meziantou.Analyzer" Version="3.0.140">
+    <PackageReference Include="Meziantou.Analyzer" Version="3.0.140" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     
     <!-- Microsoft.CodeAnalysis.BannedApiAnalyzers - https://github.com/dotnet/roslyn/tree/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.BannedApiAnalyzers -->
-    <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="5.6.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="5.6.0" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
 
     <!-- Microsoft.VisualStudio.Threading.Analyzers - https://microsoft.github.io/vs-threading/analyzers/index.html -->
-    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23">
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="18.7.23" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
 
     <!-- Roslynator - https://github.com/dotnet/roslynator -->
-    <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+    <PackageReference Include="Roslynator.Analyzers" Version="4.15.0" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -176,7 +176,7 @@
     <!-- Miscellaneous -->
     
     <!-- SBOM Generation for .NET Projects - https://github.com/microsoft/sbom-tool/tree/main/src/Microsoft.Sbom.Targets -->
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5">
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
