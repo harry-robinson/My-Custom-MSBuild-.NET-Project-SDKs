@@ -3,7 +3,7 @@ All changes to `MyCustom.NET.Sdk.Web` are documented here. This project follows 
 
 See the [README](README.md) for full usage and SDK details.
 
-## 🎯 [1.0.7] - 2026-08-08
+## 🎯 [1.0.8] - 2026-08-08
 `MyCustom.NET.Sdk.Web` 1.0.8 incorporates `MyCustom.NET.Sdk` 1.0.8 as its base. All of the following are a direct result of that import.
 
  * SDK package references updated to include `IsImplicitlyDefined="true"`. See https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#isimplicitlydefined-metadata for more details.
