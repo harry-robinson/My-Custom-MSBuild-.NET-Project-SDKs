@@ -3,6 +3,61 @@ All changes to `MyCustom.NET.Sdk.Web` are documented here. This project follows 
 
 See the [README](README.md) for full usage and SDK details.
 
+## 🎯 [1.0.7] - 2026-08-08
+`MyCustom.NET.Sdk.Web` 1.0.8 incorporates `MyCustom.NET.Sdk` 1.0.8 as its base. All of the following are a direct result of that import.
+
+ * SDK package references updated to include `IsImplicitlyDefined="true"`. See https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#isimplicitlydefined-metadata for more details.
+ * Added additional future work items.
+
+### 🎉 What's New
+
+#### C# Compiler
+None.
+
+#### MSBuild & Code Analysis
+None.
+
+#### NuGet
+None.
+
+#### Source Link & Supply Chain Security
+None.
+
+#### Analyzers
+None.
+
+### 💥 Breaking Changes
+None.
+
+### 🩹 Bug Fixes
+None.
+
+### ⚠️ Known Issues
+None.
+
+### ⬆️ Upgrading
+To consume the SDK, add it to `global.json` at the root of your repository:
+```json
+{
+  "msbuild-sdks": {
+    "MyCustom.NET.Sdk": "1.0.8"
+  }
+}
+```
+
+Then reference it in your `.csproj`:
+```xml
+<Project Sdk="MyCustom.NET.Sdk">
+
+  <PropertyGroup>
+
+    <!-- Usual properties and overrides go here -->
+
+  </PropertyGroup>
+
+</Project>
+```
+
 ## 🎯 [1.0.7] - 2026-08-07
 `MyCustom.NET.Sdk.Web` 1.0.7 incorporates `MyCustom.NET.Sdk` 1.0.7 as its base. All of the following are a direct result of that import.
 

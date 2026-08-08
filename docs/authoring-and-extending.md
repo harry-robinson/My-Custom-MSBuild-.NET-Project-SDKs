@@ -137,5 +137,33 @@ This is the strongest form of enforcement and should be used sparingly. A consum
 > [!WARNING]
 > Silently overriding a property a developer has explicitly set in their project file is likely to cause confusion. If you lock a property this way, document it clearly and consider pairing it with a `Warning` or `Error` that fires if the project attempts to set a conflicting value, so the behavior is explicit rather than silent.
 
+## Adding Package References
+A custom SDK can automatically add `PackageReference` items to consuming projects for packages required by the SDK. When the SDK owns the dependency and its version, mark the reference with [`IsImplicitlyDefined="true"`](https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files#isimplicitlydefined-metadata) as follows:
+```xml
+<ItemGroup>
+  <PackageReference Include="Some.Package"
+                    Version="1.2.3"
+                    IsImplicitlyDefined="true" />
+</ItemGroup>
+```
+
+This tells NuGet that the package was implicitly added by the SDK rather than explicitly requested by the consuming project. NuGet tooling will not treat it as an explicitly managed dependency.
+
+### Updating Existing References
+Use PackageReference Update when a consuming project needs to override the version of a package implicitly added by the SDK.
+```xml
+<ItemGroup>
+  <PackageReference Update="Some.Package"
+                    Version="1.2.4" />
+</ItemGroup>
+```
+
+### Central Package Management
+When using [Central Package Management](https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management), specify the version directly on an SDK-owned `PackageReference`. Do **not** define a corresponding `PackageVersion` in `Directory.Packages.props`, as this results in NuGet error `NU1009`.
+
+Use `IsImplicitlyDefined="true"` when a package is an implementation detail of the SDK and the SDK should control its version. If a consuming project needs to override the version, use `PackageReference Update` instead.
+
+`PackageReference Update` cannot be used in `Directory.Packages.props` for this purpose because that file is intended to centrally manage package **versions** through `PackageVersion`. It is not where the SDK's implicitly defined `PackageReference` is being evaluated. The `Update` must be applied in the project itself or in an MSBuild file imported by the project, such as `Directory.Build.props`, `Directory.Build.targets` or another imported `.props`/`.targets` file.
+
 ## Troubleshooting
 For tips on diagnosing and troubleshooting MSBuild execution, including how to query resolved property values, generate binary logs and inspect the fully expanded project file, see the [Debugging](debugging.md) guide.
