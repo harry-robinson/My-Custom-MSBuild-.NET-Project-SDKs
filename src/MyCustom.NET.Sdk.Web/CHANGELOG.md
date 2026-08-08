@@ -3,6 +3,66 @@ All changes to `MyCustom.NET.Sdk.Web` are documented here. This project follows 
 
 See the [README](README.md) for full usage and SDK details.
 
+## 🎯 [1.0.7] - 2026-08-07
+`MyCustom.NET.Sdk.Web` 1.0.7 incorporates `MyCustom.NET.Sdk` 1.0.7 as its base. All of the following are a direct result of that import.
+
+ * The `<Title>` property was deleted to streamline project metadata since they're effectively ignored by the majority of nuget client UIs.
+ * Fixed errant solution file path reference to Directory.Packages.props.
+ * Upgraded actions/checkout to v7 in CI workflow.
+ * Bumped .NET SDK version to 10.0.302 in global.json for latest patch updates.
+ * Updated actions/setup-dotnet@v6 to v7 in CI workflow. See https://github.com/actions/setup-dotnet/releases for details.
+ * Updates to Analyzers. See below for details.
+ 
+### 🎉 What's New
+
+#### C# Compiler
+None.
+
+#### MSBuild & Code Analysis
+None.
+
+#### NuGet
+None.
+
+#### Source Link & Supply Chain Security
+None.
+
+#### Analyzers
+* `Meziantou.Analyzer` - Updated NuGet package from 3.0.114 to 3.0.140. See https://github.com/meziantou/Meziantou.Analyzer/releases/tag/3.0.140 for change details.
+* `Microsoft.CodeAnalysis.BannedApiAnalyzers` - Updated NuGet package from 3.3.4 to 5.6.0.
+
+### 💥 Breaking Changes
+None.
+
+### 🩹 Bug Fixes
+None.
+
+### ⚠️ Known Issues
+None.
+
+### ⬆️ Upgrading
+To consume the SDK, add it to `global.json` at the root of your repository:
+```json
+{
+  "msbuild-sdks": {
+    "MyCustom.NET.Sdk": "1.0.7"
+  }
+}
+```
+
+Then reference it in your `.csproj`:
+```xml
+<Project Sdk="MyCustom.NET.Sdk">
+
+  <PropertyGroup>
+
+    <!-- Usual properties and overrides go here -->
+
+  </PropertyGroup>
+
+</Project>
+```
+
 ## 🎯 [1.0.6] - 2026-06-25
 `MyCustom.NET.Sdk.Web` 1.0.6 incorporates `MyCustom.NET.Sdk` 1.0.6 as its base. All of the following are a direct result of that import.
 
